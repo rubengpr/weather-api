@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(124, 185, 253);
+    margin: 0;
+}
+
+input {
+    margin: 20px 0px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+#output-box {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(10, 169, 249);
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    
+}
+
+#icon {
+    width: 60px;
+    height: 60px;
+}
