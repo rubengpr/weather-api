@@ -47,4 +47,4 @@ function displayInfo(rawData) {
 
 }
 
-const userInput = document.getElementById("input").addEventListener("change", getWeatherData)
+const userInput = document.getElementById("city-input").addEventListener("change", getWeatherData)

@@ -7,13 +7,179 @@
     <title>Weather Project</title>
 </head>
 <body>
-    <input id="input" type="text" placeholder="Choose a city">
-    <div id="output-box">
-        <img id="icon" src="" alt="">
-        <p id="description"></p>
-        <p id="temperature"></p>
-        <p id="humidity"></p>
-    </div>
+    <section id="top-navigation">
+        <input id="city-input" type="text" placeholder="Choose a city">
+    </section>
+    <section id="weather-metrics">
+        <div class="hero-cell">
+            <div id="main-metrics">
+                <img id="main-icon" src="assets/sunny.svg" alt="A sun icon">
+                <div id="temp">
+                    <p id="temperature">20 ºC</p>
+                    <p id="short-description">Clear skies</p>
+                </div>
+            </div>
+            <div id="temperature-div">
+                <div class="temp-metrics">
+                    <img class="temp-icons" src="assets/cloudy.svg" alt="A weather icon">
+                    <div class="temperature-minmax-text">
+                        <p class="temperature-title">Min</p>
+                        <p class="temperature-value">16 ºC</p>
+                    </div>
+                </div>
+                <div class="temp-metrics">
+                    <img class="temp-icons" src="assets/cloudy.svg" alt="A weather icon">
+                    <div class="temperature-minmax-text">
+                        <p class="temperature-title">Min</p>
+                        <p class="temperature-value">16 ºC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="secondary-metrics" class="hero-cell">
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+            <div class="metric">
+                <img class="metric-icon" src="assets/halfmoon.svg" alt="A weather icon">
+                <div class="metric-text">
+                    <p class="metric-name">Wind</p>
+                    <p class="metric-value">20 km/h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="hourly-forecast">
+        <h2>Hourly forecast</h2>
+        <div class="hourly-array">
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+            <div class="hourly-box">
+                <p class="hourly-time">2pm</p>
+                <img class="hourly-icon" src="assets/cloudy.svg" alt="A weather icon">
+            </div>
+        </div>
+    </section>
+    <section id="daily-forecast">
+        <h2>3-day forecast</h2>
+        <div class="daily-array">
+            <div class="daily-box">
+                <img class="daily-icon" src="assets/cloudynight.svg" alt="A weather icon">
+                <div class="card-text-content">
+                    <div class="daily-text-box">
+                        <p class="weekday">SUN</p>
+                        <p class="number-day">05 OCT</p>
+                    </div>
+                    <div class="daily-temperature-box">
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">15 ºC</p>
+                            <p class="daily-minmax">min</p>
+                        </div>
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">22 ºC</p>
+                            <p class="daily-minmax">max</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="daily-box">
+                <img class="daily-icon" src="assets/cloudynight.svg" alt="A weather icon">
+                <div class="card-text-content">
+                    <div class="daily-text-box">
+                        <p class="weekday">SUN</p>
+                        <p class="number-day">05 OCT</p>
+                    </div>
+                    <div class="daily-temperature-box">
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">15 ºC</p>
+                            <p class="daily-minmax">min</p>
+                        </div>
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">22 ºC</p>
+                            <p class="daily-minmax">max</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="daily-box">
+                <img class="daily-icon" src="assets/cloudynight.svg" alt="A weather icon">
+                <div class="card-text-content">
+                    <div class="daily-text-box">
+                        <p class="weekday">SUN</p>
+                        <p class="number-day">05 OCT</p>
+                    </div>
+                    <div class="daily-temperature-box">
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">15 ºC</p>
+                            <p class="daily-minmax">min</p>
+                        </div>
+                        <div class="daily-minmax-temperature-box">
+                            <p class="daily-minmax-temperature">22 ºC</p>
+                            <p class="daily-minmax">max</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

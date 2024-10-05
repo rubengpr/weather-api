@@ -1,19 +1,31 @@
+html:root {
+    --bck-clr: rgb(48, 171, 247);
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: rgb(124, 185, 253);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bck-clr);
     margin: 0;
 }
 
-input {
+#top-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#city-input {
     margin: 20px 0px;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
+    width: 1000px;
+    height: 40px;
     font-size: 16px;
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
 
 #output-box {
@@ -32,4 +44,187 @@ input {
 #icon {
     width: 60px;
     height: 60px;
+}
+
+#weather-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(201, 255, 201);
+    gap: 10px;
+    width: 1000px;
+    border-radius: 5px;
+}
+
+.hero-cell {
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#main-icon {
+    width: 200px;
+}
+
+#main-metrics {
+}
+
+.metric {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.metric-icon {
+    width: 50px;
+}
+
+p {
+    margin: 0;
+}
+
+.temp-icons {
+    width: 80px;
+}
+
+#main-metrics {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#temperature {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#short-description {
+    font-size: 30px;
+}
+
+#temperature-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.temp-metrics {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.temp-icons {
+    width: 70px;
+}
+
+.temperature-minmax-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temperature-title {
+    font-size: 20px;
+}
+
+.temperature-value {
+    font-size: 26px;
+}
+
+#secondary-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.metric-name {
+    font-size: 16px;
+}
+
+.metric-value {
+    font-size: 20px;
+}
+
+.hourly-box {
+    width: 90px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.hourly-icon {
+    width: 50px;
+}
+
+.hourly-array {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.hourly-time {
+    font-size: 14px;
+}
+
+.daily-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: beige;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 270px;
+}
+
+.daily-icon {
+    width: 100px;
+}
+
+.daily-text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weekday {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.number-day {
+    font-size: 12px;
+}
+
+.card-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.daily-temperature-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.daily-array {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
