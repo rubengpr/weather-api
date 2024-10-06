@@ -49,7 +49,6 @@ body {
 #weather-metrics {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: rgb(201, 255, 201);
     gap: 10px;
     width: 1000px;
     border-radius: 5px;
