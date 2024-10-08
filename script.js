@@ -42,7 +42,7 @@ function assignIcon(outputName, icon) {
             icon.src = "assets/extreme-night-snow.svg"
             break;
         case "thunder-rain":
-            icon.src = "assets/thunderstorms-rain"
+            icon.src = "assets/thunderstorms-rain.svg"
             break;
         case "thunder-showers-day":
             icon.src = "assets/thunderstorms-day-rain.svg"
@@ -55,6 +55,9 @@ function assignIcon(outputName, icon) {
             break;
         case "showers-night":
             icon.src = "assets/rain.svg"
+            break;
+        default:
+            icon.src = "assets/clear-day.svg";
             break;
         }
     };
@@ -70,8 +73,10 @@ async function getWeatherData() {
 
 function displayInfo(rawData) {
 
+    console.log(rawData)
+
     const mainIcon = document.getElementById("main-icon");
-    let iconWeather = rawData.days[0].icon;
+    let iconWeather = rawData.currentConditions.icon;
     assignIcon(iconWeather, mainIcon);
     
     const mainTemp = document.getElementById("temperature");
@@ -97,16 +102,17 @@ function displayInfo(rawData) {
     uvIndex.textContent = rawData.currentConditions.uvindex;
 
     const sunrise = document.getElementById("sunrise");
-    sunrise.textContent = rawData.currentConditions.sunrise.substring(0, 5) + "am";
+    sunrise.textContent = rawData.currentConditions.sunrise.substring(0, 5);
 
     const sunset = document.getElementById("sunset");
-    sunset.textContent = rawData.currentConditions.sunset.substring(0, 5) + "pm"
+    sunset.textContent = rawData.currentConditions.sunset.substring(0, 5);
 
     const hourlyForecastTime = document.getElementsByClassName("hourly-time");
     const timeArray = Array.from(hourlyForecastTime);
+    let hour = new Date().getHours();
     
     timeArray.forEach(function(time, i) {
-        time.textContent = rawData.days[i].hours[i].datetime.substring(0,2) + " AM";
+        time.textContent = rawData.days[0].hours[hour + i + 1].datetime.substring(0,2) + " H";
     });
 
     const hourlyForecastIcon = document.getElementsByClassName("hourly-icon");
@@ -121,16 +127,17 @@ function displayInfo(rawData) {
     const iconDailyArray = Array.from(dailyForecastIcon);
 
     iconDailyArray.forEach(function(dayIcon, i) {
-        let iconDaily = rawData.days[i].hours[i].icon
+        let iconDaily = rawData.days[i+1].icon
         assignIcon(iconDaily, dayIcon);
     });
 
-    const numberDaily = document.getElementsByClassName("number-day");
-    const numberDailyArray = Array.from(numberDaily);
+    const weekday = document.getElementsByClassName("weekday");
+    const weekdayArray = Array.from(weekday);
+    let day = new Date().getDay();
+    const dayArray = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
-    numberDailyArray.forEach(function(element, i) {
-        let dateTime = rawData.days[i].datetime.substring(5);
-        element.textContent = dateTime;
+    weekdayArray.forEach(function(element, i) {
+        element.textContent = dayArray[day + i];
     });
 
     const minTempDaily = document.getElementsByClassName("daily-min-temperature");

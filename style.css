@@ -219,7 +219,7 @@ p {
 .card-text-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     margin-left: 15px;
 }
 
