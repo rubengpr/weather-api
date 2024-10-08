@@ -106,7 +106,7 @@ function displayInfo(rawData) {
     const timeArray = Array.from(hourlyForecastTime);
     
     timeArray.forEach(function(time, i) {
-        time.textContent = rawData.days[i].hours[i].datetime.substring(0,2) + " am";
+        time.textContent = rawData.days[i].hours[i].datetime.substring(0,2) + " AM";
     });
 
     const hourlyForecastIcon = document.getElementsByClassName("hourly-icon");
