@@ -87,7 +87,12 @@ function displayInfo(rawData) {
     mainDesc.textContent = rawData.currentConditions.conditions;
 
     const minTemp = document.getElementById("min-temperature-value");
+    const fahrMinTemp = rawData.days[0].tempmin
+    minTemp.textContent = fahrToCelsius(fahrMinTemp) + "ºC";
+
     const maxTemp = document.getElementById("max-temperature-value");
+    const fahrMaxTemp = rawData.days[0].tempmin
+    maxTemp.textContent = fahrToCelsius(fahrMaxTemp) + "ºC";
 
     const chanceRain = document.getElementById("chance-rain");
     chanceRain.textContent = rawData.currentConditions.precipprob + "%";
@@ -112,14 +117,24 @@ function displayInfo(rawData) {
     let hour = new Date().getHours();
     
     timeArray.forEach(function(time, i) {
-        time.textContent = rawData.days[0].hours[hour + i + 1].datetime.substring(0,2) + " H";
+        let hourElement = hour + i +1;
+        if (hourElement < 24) {
+            time.textContent = rawData.days[0].hours[hourElement].datetime.substring(0,2) + " H";
+        } else {
+            time.textContent = rawData.days[1].hours[hourElement - 24].datetime.substring(0,2) + " H";
+        };
     });
 
     const hourlyForecastIcon = document.getElementsByClassName("hourly-icon");
     const iconArray = Array.from(hourlyForecastIcon);
 
     iconArray.forEach(function(hourIcon, i) {
-        let iconHourly = rawData.days[i].hours[i].icon
+        let hourElement = hour + i +1;
+        if (hourElement < 24) {
+            iconHourly = rawData.days[0].hours[hourElement].icon;
+        } else {
+            iconHourly = rawData.days[1].hours[hourElement - 24].icon;
+        };
         assignIcon(iconHourly, hourIcon)
     });
 

@@ -132,12 +132,12 @@ p {
 }
 
 .temperature-title {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
 }
 
 .temperature-value {
-    font-size: 26px;
+    font-size: 14px;
 }
 
 #secondary-metrics {
@@ -175,7 +175,7 @@ p {
 .hourly-array {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
@@ -234,7 +234,7 @@ p {
     width: 1000px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
@@ -253,4 +253,8 @@ p {
 .daily-min-temperature, .daily-max-temperature {
     font-size: 26px;
     font-weight: 600;
+}
+
+#hourly-forecast {
+    width: 1000px;
 }
