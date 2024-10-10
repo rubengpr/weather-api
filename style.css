@@ -1,6 +1,7 @@
 html:root {
     --bck-clr: rgb(48, 171, 247);
     --box-clr: rgb(51, 121, 242);
+    --i-clr: rgb(109, 109, 109);
 }
 
 body {
@@ -27,7 +28,11 @@ body {
     width: 1000px;
     height: 40px;
     font-size: 16px;
-    padding: 5px 20px;
+    padding: 5px 50px;
+}
+
+#city-input:focus {
+    outline: none;
 }
 
 #output-box {
@@ -257,4 +262,25 @@ p {
 
 #hourly-forecast {
     width: 1000px;
+}
+
+#top-navigation {
+    position: relative;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    padding: 0px 10px;
+    color: var(--i-clr);
+}
+
+.fa-circle-xmark {
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: var(--i-clr);
 }

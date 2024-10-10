@@ -1,4 +1,5 @@
 const input = document.getElementById("city-input");
+const deleteIcon = document.getElementById("delete-icon");
 
 window.onload = () => {
     input.value = "Barcelona";
@@ -63,7 +64,8 @@ function assignIcon(outputName, icon) {
     };
 
 async function getWeatherData() {
-    let city = input.value
+    
+    let city = input.value;
     let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=SBT2PTJB3ASMEVTUST7UJU9GH`, {
         mode: 'cors'
       });
@@ -172,4 +174,20 @@ function displayInfo(rawData) {
     });
 };
 
-const userInput = input.addEventListener("change", getWeatherData)
+function clearInput() {
+    input.value = "";
+    deleteIcon.style.display = "none";
+
+}
+
+function displayDeleteIcon() {
+    if (input.value === "") {
+        deleteIcon.style.display = "none";
+    } else {
+        deleteIcon.style.display = "block";
+    };
+}
+
+const clearInputValue = deleteIcon.addEventListener("click", clearInput);
+const userInput = input.addEventListener("change", getWeatherData);
+const checkInputValue = input.addEventListener("input", displayDeleteIcon);
