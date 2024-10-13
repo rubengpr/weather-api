@@ -144,24 +144,25 @@ function displayInfo(rawData) {
     const iconDailyArray = Array.from(dailyForecastIcon);
 
     iconDailyArray.forEach(function(dayIcon, i) {
-        let iconDaily = rawData.days[i+1].icon
+        let iconDaily = rawData.days[i + 1].icon
         assignIcon(iconDaily, dayIcon);
     });
 
     const weekday = document.getElementsByClassName("weekday");
     const weekdayArray = Array.from(weekday);
     let day = new Date().getDay();
+    console.log(day);
     const dayArray = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
     weekdayArray.forEach(function(element, i) {
-        element.textContent = dayArray[day + i];
+        element.textContent = dayArray[day + i + 1];
     });
 
     const minTempDaily = document.getElementsByClassName("daily-min-temperature");
     const minTempDailyArray = Array.from(minTempDaily);
 
     minTempDailyArray.forEach(function(element, i) {
-        let minTempEl = rawData.days[i].tempmin;
+        let minTempEl = rawData.days[i + 1].tempmin;
         element.textContent = fahrToCelsius(minTempEl);
     });
 
@@ -169,7 +170,7 @@ function displayInfo(rawData) {
     const maxTempDailyArray = Array.from(maxTempDaily);
 
     maxTempDailyArray.forEach(function(element, i) {
-        let maxTempEl = rawData.days[i].tempmax;
+        let maxTempEl = rawData.days[i + 1].tempmax;
         element.textContent = fahrToCelsius(maxTempEl);
     });
 };

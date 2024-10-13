@@ -206,6 +206,7 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .weekday {
@@ -255,6 +256,15 @@ p {
 .daily-min-temperature, .daily-max-temperature {
     font-size: 26px;
     font-weight: 600;
+    line-height: 1;
+}
+
+.daily-minmax-temperature-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
 }
 
 #hourly-forecast {
