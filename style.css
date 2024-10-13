@@ -1,6 +1,6 @@
 html:root {
-    --bck-clr: rgb(48, 171, 247);
-    --box-clr: rgb(51, 121, 242);
+    --bck-clr: rgb(182, 227, 255);
+    --box-clr: rgb(163, 214, 255);
     --i-clr: rgb(109, 109, 109);
 }
 
@@ -88,10 +88,6 @@ p {
     margin: 0;
 }
 
-.temp-icons {
-    width: 80px;
-}
-
 #main-metrics {
     display: flex;
     flex-direction: row;
@@ -107,10 +103,11 @@ p {
 #temperature {
     font-size: 70px;
     font-weight: bold;
+    line-height: 1;
 }
 
 #short-description {
-    font-size: 30px;
+    font-size: 18px;
 }
 
 #temperature-div {

@@ -93,7 +93,7 @@ function displayInfo(rawData) {
     minTemp.textContent = fahrToCelsius(fahrMinTemp) + "ºC";
 
     const maxTemp = document.getElementById("max-temperature-value");
-    const fahrMaxTemp = rawData.days[0].tempmin
+    const fahrMaxTemp = rawData.days[0].tempmax
     maxTemp.textContent = fahrToCelsius(fahrMaxTemp) + "ºC";
 
     const chanceRain = document.getElementById("chance-rain");
@@ -116,10 +116,10 @@ function displayInfo(rawData) {
 
     const hourlyForecastTime = document.getElementsByClassName("hourly-time");
     const timeArray = Array.from(hourlyForecastTime);
-    let hour = new Date().getHours();
+    let hour = Number(rawData.currentConditions.datetime.substring(0,2));
     
     timeArray.forEach(function(time, i) {
-        let hourElement = hour + i +1;
+        let hourElement = hour + i + 1;
         if (hourElement < 24) {
             time.textContent = rawData.days[0].hours[hourElement].datetime.substring(0,2) + " H";
         } else {
@@ -131,7 +131,7 @@ function displayInfo(rawData) {
     const iconArray = Array.from(hourlyForecastIcon);
 
     iconArray.forEach(function(hourIcon, i) {
-        let hourElement = hour + i +1;
+        let hourElement = hour + i + 1;
         if (hourElement < 24) {
             iconHourly = rawData.days[0].hours[hourElement].icon;
         } else {
@@ -188,6 +188,7 @@ function displayDeleteIcon() {
     };
 }
 
-const clearInputValue = deleteIcon.addEventListener("click", clearInput);
+
 const userInput = input.addEventListener("change", getWeatherData);
 const checkInputValue = input.addEventListener("input", displayDeleteIcon);
+const clearInputValue = deleteIcon.addEventListener("click", clearInput);
