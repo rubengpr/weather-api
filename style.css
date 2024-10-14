@@ -3,6 +3,8 @@ html:root {
     --bck-clr: rgb(182, 227, 255);
     --box-clr: rgb(163, 214, 255);
     --i-clr: rgb(109, 109, 109);
+    --metric-name: rgb(6, 6, 6);
+    font-size: 16px;
 }
 
 /* Global styles */
@@ -30,17 +32,17 @@ p {
 
 .fa-magnifying-glass {
     position: absolute;
-    left: 10px;
-    font-size: 16px;
-    padding: 0px 10px;
+    left: 0.625rem;
+    font-size: 1rem;
+    padding: 0rem 0.625rem;
     color: var(--i-clr);
 }
 
 .fa-circle-xmark {
     position: absolute;
-    right: 10px;
-    font-size: 16px;
-    padding: 0 10px;
+    right: 0.625rem;
+    font-size: 1rem;
+    padding: 0rem 0.625rem;
     cursor: pointer;
     color: var(--i-clr);
 }
@@ -48,13 +50,13 @@ p {
 /* City Input */
 #city-input {
     font-family: inherit;
-    margin: 20px 0px;
+    margin: 1.25rem 0rem;
     border: none;
-    border-radius: 10px;
-    width: 1000px;
-    height: 40px;
-    font-size: 16px;
-    padding: 5px 50px;
+    border-radius: 0.625rem;
+    width: 62.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    padding: 0.3125rem 3.125rem;
 }
 
 #city-input:focus {
@@ -65,14 +67,14 @@ p {
 #weather-metrics {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 1000px;
-    border-radius: 5px;
+    gap: 0.625rem;
+    width: 62.5rem;
+    border-radius: 0.3125rem;
 }
 
 .hero-cell {
-    padding: 20px;
-    border-radius: 15px;
+    padding: 1.25rem;
+    border-radius: 0.9375rem;
 }
 
 /* Main Metrics */
@@ -83,7 +85,7 @@ p {
 }
 
 #main-icon {
-    width: 200px;
+    width: 12.5rem;
 }
 
 #temp {
@@ -93,13 +95,13 @@ p {
 }
 
 #temperature {
-    font-size: 70px;
+    font-size: 4.375rem;
     font-weight: bold;
     line-height: 1;
 }
 
 #short-description {
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 #temperature-div {
@@ -116,7 +118,7 @@ p {
 }
 
 .temp-icons {
-    width: 50px;
+    width: 3.125rem;
 }
 
 .temperature-minmax-text {
@@ -126,12 +128,12 @@ p {
 }
 
 .temperature-title {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
 .temperature-value {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 /* Secondary Metrics */
@@ -147,27 +149,27 @@ p {
 }
 
 .metric-icon {
-    width: 44px;
+    width: 2.75rem;
 }
 
 .metric-text {
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .metric-name {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 400;
-    color: #060606;
+    color: var(--metric-name);
 }
 
 .metric-value {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 600;
 }
 
 /* Hourly Forecast */
 #hourly-forecast {
-    width: 1000px;
+    width: 62.5rem;
 }
 
 .hourly-array {
@@ -175,38 +177,38 @@ p {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .hourly-box {
-    width: 90px;
-    height: 80px;
+    width: 5.625rem;
+    height: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--box-clr);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
 }
 
 .hourly-icon {
-    width: 50px;
+    width: 3.125rem;
 }
 
 .hourly-time {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
 }
 
 /* Daily Forecast */
 .daily-array {
-    width: 1000px;
+    width: 62.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .daily-box {
@@ -214,13 +216,13 @@ p {
     flex-direction: row;
     justify-content: center;
     background-color: var(--box-clr);
-    border-radius: 10px;
-    padding: 10px 0px;
-    width: 270px;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0rem;
+    width: 16.875rem;
 }
 
 .daily-icon {
-    width: 100px;
+    width: 6.25rem;
 }
 
 .daily-text-box {
@@ -228,24 +230,24 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .weekday {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: bold;
 }
 
 .number-day {
-    font-size: 14px;
-    margin-left: 5px;
+    font-size: 0.875rem;
+    margin-left: 0.3125rem;
 }
 
 .card-text-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 15px;
+    margin-left: 0.9375rem;
 }
 
 .daily-temperature-box {
@@ -253,11 +255,11 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .daily-minmax {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
@@ -271,7 +273,7 @@ p {
 
 .daily-min-temperature, 
 .daily-max-temperature {
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: 600;
     line-height: 1;
 }
