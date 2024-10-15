@@ -63,15 +63,26 @@ function assignIcon(outputName, icon) {
         }
     };
 
-async function getWeatherData() {
+    async function getWeatherData() {
+        try {
+            let city = input.value;
+            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=SBT2PTJB3ASMEVTUST7UJU9GH`, {
+                mode: 'cors'
+            });
+            
+            // Check if the response is OK (status code 200-299)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
     
-    let city = input.value;
-    let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=SBT2PTJB3ASMEVTUST7UJU9GH`, {
-        mode: 'cors'
-      });
-    let rawData = await response.json();
-    displayInfo(rawData);
-};
+            let rawData = await response.json();
+            displayInfo(rawData);
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+            displayError(`Failed to fetch weather data: ${error.message}`);
+        }
+    };
+    
 
 function displayInfo(rawData) {
 
