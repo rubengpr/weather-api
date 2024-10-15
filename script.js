@@ -1,5 +1,6 @@
 const input = document.getElementById("city-input");
 const deleteIcon = document.getElementById("delete-icon");
+const settingsButton = document.getElementById("settings");
 
 window.onload = () => {
     input.value = "Barcelona";
@@ -210,7 +211,18 @@ function displayDeleteIcon() {
     };
 }
 
+function openSettings() {
+    const dropdownMenu = document.getElementById("dropdown-menu");
+        if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
+            dropdownMenu.style.display = "block";
+        } else {
+            dropdownMenu.style.display = "none";
+    }
+};
+
+
 
 const userInput = input.addEventListener("change", getWeatherData);
 const checkInputValue = input.addEventListener("input", displayDeleteIcon);
 const clearInputValue = deleteIcon.addEventListener("click", clearInput);
+const settingsOpen = settingsButton.addEventListener("click", openSettings);

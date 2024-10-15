@@ -4,6 +4,8 @@ html:root {
     --box-clr: rgb(163, 214, 255);
     --i-clr: rgb(109, 109, 109);
     --metric-name: rgb(6, 6, 6);
+    --white: rgb(255, 255, 255);
+    --white-hvr: rgba(255, 255, 255, 0.90);
 }
 
 /* Global styles */
@@ -20,12 +22,16 @@ p {
     margin: 0;
 }
 
+button {
+    font-family: "Poppins", sans-serif;
+}
+
 /* Top Navigation */
 #top-navigation {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+    width: 62.5rem;
     position: relative;
 }
 
@@ -39,11 +45,88 @@ p {
 
 .fa-circle-xmark {
     position: absolute;
-    right: 0.625rem;
+    right: 4rem;
     font-size: 1rem;
     padding: 0rem 0.625rem;
     cursor: pointer;
     color: var(--i-clr);
+}
+
+#settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    padding: 0.875rem;
+    background-color: var(--white);
+    border-radius: 50%;
+}
+
+#settings:hover {
+    cursor: pointer;
+    background-color: var(--white-hvr);
+}
+
+.fa-gear {
+    color: var(--i-clr);
+    font-size: 1.125rem;
+}
+
+#dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: none;
+    border-radius: 0.3rem;
+    width: 6rem;
+}
+
+#dropdown-menu:hover {
+    cursor: pointer;
+}
+
+.dropdown-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 0 0.4rem;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(242, 250, 254);
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+}
+
+.dropdown-button {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+    width: 100%;
+    font-weight: 400;
+    text-align: left;
+}
+
+.dropdown-button:hover {
+    cursor: pointer;
+}
+
+.dropdown-item:nth-child(1) {
+    border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.dropdown-item:nth-child(2) {
+    border-radius: 0 0 0.3rem 0.3rem;
 }
 
 /* City Input */
@@ -52,7 +135,7 @@ p {
     margin: 1.25rem 0rem;
     border: none;
     border-radius: 0.625rem;
-    width: 62.5rem;
+    width: 95%;
     height: 2.5rem;
     font-size: 1rem;
     padding: 0.3125rem 3.125rem;
@@ -289,7 +372,7 @@ p {
 }
 
 #modal-content {
-    background-color: white;
+    background-color: var(--white);
     margin: 15% auto;
     padding: 25px;
     border: 1px solid rgb(185, 185, 185);
@@ -303,6 +386,9 @@ p {
 
 #modal-body {
     margin: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #modal-footer {
