@@ -81,7 +81,19 @@ function assignIcon(outputName, icon) {
             displayError(`Failed to fetch weather data: ${error.message}`);
         }
     };
-    
+
+    function displayError(message) {
+        const errorElement = document.getElementById('error-message');
+        const modal = document.getElementById("modal");
+        const closeModal = document.getElementById("close");
+        errorElement.textContent = message;
+        modal.style.display = "block";
+
+        closeModal.addEventListener("click", function() {
+            modal.style.display = "none";
+        })
+    };
+        
 
 function displayInfo(rawData) {
 
