@@ -119,7 +119,8 @@ function displayInfo(rawData) {
     maxTemp.textContent = fahrToCelsius(fahrMaxTemp) + "ºC";
 
     const chanceRain = document.getElementById("chance-rain");
-    chanceRain.textContent = rawData.currentConditions.precipprob + "%";
+    let hour = Number(rawData.currentConditions.datetime.substring(0,2));
+    chanceRain.textContent = rawData.days[0].hours[hour].precipprob + "%";
 
     const humidity = document.getElementById("humidity");
     humidity.textContent = rawData.currentConditions.humidity + "%";
@@ -138,7 +139,6 @@ function displayInfo(rawData) {
 
     const hourlyForecastTime = document.getElementsByClassName("hourly-time");
     const timeArray = Array.from(hourlyForecastTime);
-    let hour = Number(rawData.currentConditions.datetime.substring(0,2));
     
     timeArray.forEach(function(time, i) {
         let hourElement = hour + i + 1;
@@ -173,7 +173,6 @@ function displayInfo(rawData) {
     const weekday = document.getElementsByClassName("weekday");
     const weekdayArray = Array.from(weekday);
     let day = new Date().getDay();
-    console.log(day);
     const dayArray = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
     weekdayArray.forEach(function(element, i) {
