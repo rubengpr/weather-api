@@ -9,9 +9,21 @@ window.onload = () => {
     getWeatherData();
 }
 
+function celsiusToFahr(celsius) {
+    return (celsius * 1.8) + 32;
+}
+
 function fahrToCelsius(fahr) {
-    return Math.floor((fahr - 32) / 1.8);
+    return (fahr - 32) / 1.8;
 };
+
+function kmhToMph(kmh) {
+    return kmh * 0.621371;
+}
+
+function mphToKmh(mph) {
+    return mph * 1.60934;
+}
 
 function assignIcon(outputName, icon) {
     switch (outputName) {
@@ -66,24 +78,24 @@ function assignIcon(outputName, icon) {
         }
     };
 
-    async function getWeatherData() {
-        try {
-            let city = input.value;
-            let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=SBT2PTJB3ASMEVTUST7UJU9GH`, {
-                mode: 'cors'
-            });
+async function getWeatherData() {
+    try {
+        let city = input.value;
+        let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=SBT2PTJB3ASMEVTUST7UJU9GH`, {
+            mode: 'cors'
+        });
             
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-    
-            let rawData = await response.json();
-            displayInfo(rawData);
-        } catch (error) {
-            console.error("Error fetching weather data:", error);
-            displayError(`Failed to fetch weather data: ${error.message}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    };
+    
+        let rawData = await response.json();
+        displayInfo(rawData);
+    } catch (error) {
+        console.error("Error fetching weather data:", error);
+        displayError(`Failed to fetch weather data: ${error.message}`);
+    }
+};
 
     function displayError(message) {
         const errorElement = document.getElementById('error-message');
@@ -97,6 +109,8 @@ function assignIcon(outputName, icon) {
         })
     };
         
+let mainTemp, fahrTemp, mainTempCelsius, fahrMinTemp, minTempCelsius, minTemp, fahrMaxTemp, maxTempCelsius, maxTemp, wind, minTempEl, minTempElCelsius, maxTempEl, maxTempElCelsius, minTempDailyArray, maxTempDailyArray, windValueKmh, windValueMph;
+
 
 function displayInfo(rawData) {
 
@@ -106,20 +120,23 @@ function displayInfo(rawData) {
     let iconWeather = rawData.currentConditions.icon;
     assignIcon(iconWeather, mainIcon);
     
-    const mainTemp = document.getElementById("temperature");
-    const fahrTemp = rawData.currentConditions.temp;
-    mainTemp.textContent = fahrToCelsius(fahrTemp) + "ºC";
+    mainTemp = document.getElementById("temperature");
+    fahrTemp = rawData.currentConditions.temp;
+    mainTempCelsius = fahrToCelsius(fahrTemp);
+    mainTemp.textContent = Math.floor(mainTempCelsius) + "ºC";
 
     const mainDesc = document.getElementById("short-description");
     mainDesc.textContent = rawData.currentConditions.conditions;
 
-    const minTemp = document.getElementById("min-temperature-value");
-    const fahrMinTemp = rawData.days[0].tempmin
-    minTemp.textContent = fahrToCelsius(fahrMinTemp) + "ºC";
+    minTemp = document.getElementById("min-temperature-value");
+    fahrMinTemp = rawData.days[0].tempmin;
+    minTempCelsius = fahrToCelsius(fahrMinTemp);
+    minTemp.textContent = Math.floor(minTempCelsius) + "ºC";
 
-    const maxTemp = document.getElementById("max-temperature-value");
-    const fahrMaxTemp = rawData.days[0].tempmax
-    maxTemp.textContent = fahrToCelsius(fahrMaxTemp) + "ºC";
+    maxTemp = document.getElementById("max-temperature-value");
+    fahrMaxTemp = rawData.days[0].tempmax
+    maxTempCelsius = fahrToCelsius(fahrMaxTemp);
+    maxTemp.textContent = Math.floor(fahrToCelsius(fahrMaxTemp)) + "ºC";
 
     const chanceRain = document.getElementById("chance-rain");
     chanceRain.textContent = rawData.days[0].precipprob + "%";
@@ -127,8 +144,10 @@ function displayInfo(rawData) {
     const humidity = document.getElementById("humidity");
     humidity.textContent = rawData.currentConditions.humidity + "%";
 
-    const wind = document.getElementById("wind");
-    wind.textContent = rawData.currentConditions.windspeed + " km/h";
+    wind = document.getElementById("wind");
+    windValueKmh = rawData.currentConditions.windspeed;
+    windValueMph = kmhToMph(windValueKmh);
+    wind.textContent = windValueKmh + " km/h";
 
     const uvIndex = document.getElementById("uv-index");
     uvIndex.textContent = rawData.currentConditions.uvindex;
@@ -182,20 +201,22 @@ function displayInfo(rawData) {
         element.textContent = dayArray[day + i + 1];
     });
 
-    const minTempDaily = document.getElementsByClassName("daily-min-temperature");
-    const minTempDailyArray = Array.from(minTempDaily);
+    minTempDaily = document.getElementsByClassName("daily-min-temperature");
+    minTempDailyArray = Array.from(minTempDaily);
 
     minTempDailyArray.forEach(function(element, i) {
-        let minTempEl = rawData.days[i + 1].tempmin;
-        element.textContent = fahrToCelsius(minTempEl);
+        minTempEl = rawData.days[i + 1].tempmin;
+        minTempElCelsius = fahrToCelsius(minTempEl);
+        element.textContent = Math.floor(minTempElCelsius);
     });
 
-    const maxTempDaily = document.getElementsByClassName("daily-max-temperature");
-    const maxTempDailyArray = Array.from(maxTempDaily);
+    maxTempDaily = document.getElementsByClassName("daily-max-temperature");
+    maxTempDailyArray = Array.from(maxTempDaily);
 
     maxTempDailyArray.forEach(function(element, i) {
-        let maxTempEl = rawData.days[i + 1].tempmax;
-        element.textContent = fahrToCelsius(maxTempEl);
+        maxTempEl = rawData.days[i + 1].tempmax;
+        maxTempElCelsius = fahrToCelsius(maxTempEl);
+        element.textContent = Math.floor(maxTempElCelsius);
     });
 };
 
@@ -225,16 +246,47 @@ function openSettings() {
 function toggleTemp(event) {
     if (event.target.textContent === "Celsius") {
         tempUnit.textContent = "Fahrenheit";
+        mainTemp.textContent = Math.floor(mainTempCelsius) + "ºC";
+        minTemp.textContent = Math.floor(minTempCelsius) + "ºC";
+        maxTemp.textContent = Math.floor(maxTempCelsius) + "ºC";
+        
+        minTempDailyArray.forEach(function(element) {
+            const minTempDailyValue = element.textContent;
+            element.textContent = Math.floor(fahrToCelsius(minTempDailyValue));
+        });
+
+        maxTempDailyArray.forEach(function(element) {
+            const maxTempDailyValue = element.textContent;
+            element.textContent = Math.floor(fahrToCelsius(maxTempDailyValue));
+        });
+
     } else {
         tempUnit.textContent = "Celsius";
+        mainTemp.textContent = Math.floor(fahrTemp) + "ºF";
+        minTemp.textContent = Math.floor(fahrMinTemp) + "ºF";
+        maxTemp.textContent = Math.floor(fahrMaxTemp) + "ºF";
+        
+        minTempDailyArray.forEach(function(element) {
+            const minTempDailyValue = element.textContent;
+            element.textContent = Math.floor(celsiusToFahr(minTempDailyValue));
+        });
+
+        maxTempDailyArray.forEach(function(element) {
+            const maxTempDailyValue = element.textContent;
+            element.textContent = Math.floor(celsiusToFahr(maxTempDailyValue));
+        });
     };
+
+
 };
 
 function toggleSpeed(event) {
     if (event.target.textContent === "km/h") {
         speedUnit.textContent = "mph";
+        wind.textContent = windValueKmh + "km/h";
     } else {
         speedUnit.textContent = "km/h";
+        wind.textContent = windValueMph + "mph";
     };
 };
 
