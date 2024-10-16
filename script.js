@@ -1,6 +1,8 @@
 const input = document.getElementById("city-input");
 const deleteIcon = document.getElementById("delete-icon");
 const settingsButton = document.getElementById("settings");
+const tempUnit = document.getElementById("temp-unit");
+const speedUnit = document.getElementById("speed-unit");
 
 window.onload = () => {
     input.value = "Barcelona";
@@ -120,8 +122,7 @@ function displayInfo(rawData) {
     maxTemp.textContent = fahrToCelsius(fahrMaxTemp) + "ºC";
 
     const chanceRain = document.getElementById("chance-rain");
-    let hour = Number(rawData.currentConditions.datetime.substring(0,2));
-    chanceRain.textContent = rawData.days[0].hours[hour].precipprob + "%";
+    chanceRain.textContent = rawData.days[0].precipprob + "%";
 
     const humidity = document.getElementById("humidity");
     humidity.textContent = rawData.currentConditions.humidity + "%";
@@ -140,6 +141,7 @@ function displayInfo(rawData) {
 
     const hourlyForecastTime = document.getElementsByClassName("hourly-time");
     const timeArray = Array.from(hourlyForecastTime);
+    let hour = Number(rawData.currentConditions.datetime.substring(0,2));
     
     timeArray.forEach(function(time, i) {
         let hourElement = hour + i + 1;
@@ -220,9 +222,25 @@ function openSettings() {
     }
 };
 
+function toggleTemp(event) {
+    if (event.target.textContent === "Celsius") {
+        tempUnit.textContent = "Fahrenheit";
+    } else {
+        tempUnit.textContent = "Celsius";
+    };
+};
 
+function toggleSpeed(event) {
+    if (event.target.textContent === "km/h") {
+        speedUnit.textContent = "mph";
+    } else {
+        speedUnit.textContent = "km/h";
+    };
+};
 
 const userInput = input.addEventListener("change", getWeatherData);
 const checkInputValue = input.addEventListener("input", displayDeleteIcon);
 const clearInputValue = deleteIcon.addEventListener("click", clearInput);
 const settingsOpen = settingsButton.addEventListener("click", openSettings);
+const toggleTempUnit = tempUnit.addEventListener("click", toggleTemp);
+const toggleTempSpeed = speedUnit.addEventListener("click", toggleSpeed);
