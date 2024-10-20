@@ -7,7 +7,22 @@ const speedUnit = document.getElementById("speed-unit");
 window.onload = () => {
     input.value = "Barcelona";
     getWeatherData();
+
+    setTimeout(function() {
+        const loadingPage = document.getElementById("loading-page");
+        const mainPage = document.getElementById("main-page");
+
+        loadingPage.style.opacity = "0";
+
+        mainPage.style.opacity = "1";
+
+        setTimeout(function() {
+            loadingPage.style.display = "none";
+        }, 2000);
+        
+    }, 1000);
 }
+
 
 function celsiusToFahr(celsius) {
     return (celsius * 1.8) + 32;
@@ -109,7 +124,25 @@ async function getWeatherData() {
         })
     };
         
-let mainTemp, fahrTemp, mainTempCelsius, fahrMinTemp, minTempCelsius, minTemp, fahrMaxTemp, maxTempCelsius, maxTemp, wind, minTempEl, minTempElCelsius, maxTempEl, maxTempElCelsius, minTempDailyArray, maxTempDailyArray, windValueKmh, windValueMph;
+
+let mainTemp;
+let fahrTemp;
+let mainTempCelsius;
+let fahrMinTemp;
+let minTempCelsius;
+let minTemp;
+let fahrMaxTemp;
+let maxTempCelsius;
+let maxTemp;
+let wind;
+let minTempEl;
+let minTempElCelsius;
+let maxTempEl;
+let maxTempElCelsius;
+let minTempDailyArray;
+let maxTempDailyArray;
+let windValueKmh;
+let windValueMph;
 
 
 function displayInfo(rawData) {
@@ -294,5 +327,5 @@ const userInput = input.addEventListener("change", getWeatherData);
 const checkInputValue = input.addEventListener("input", displayDeleteIcon);
 const clearInputValue = deleteIcon.addEventListener("click", clearInput);
 const settingsOpen = settingsButton.addEventListener("click", openSettings);
-const toggleTempUnit = tempUnit.addEventListener("click", toggleTemp);
+tempUnit.addEventListener("click", toggleTemp);
 const toggleTempSpeed = speedUnit.addEventListener("click", toggleSpeed);
