@@ -3,6 +3,7 @@ const deleteIcon = document.getElementById("delete-icon");
 const settingsButton = document.getElementById("settings");
 const tempUnit = document.getElementById("temp-unit");
 const speedUnit = document.getElementById("speed-unit");
+const dropdownMenu = document.getElementById("dropdown-menu");
 
 window.onload = () => {
     input.value = "Barcelona";
@@ -179,7 +180,7 @@ function displayInfo(rawData) {
 
     wind = document.getElementById("wind");
     windValueKmh = rawData.currentConditions.windspeed;
-    windValueMph = kmhToMph(windValueKmh);
+    windValueMph = Math.round(kmhToMph(windValueKmh) * 10) / 10;
     wind.textContent = windValueKmh + " km/h";
 
     const uvIndex = document.getElementById("uv-index");
@@ -268,7 +269,6 @@ function displayDeleteIcon() {
 }
 
 function openSettings() {
-    const dropdownMenu = document.getElementById("dropdown-menu");
         if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
             dropdownMenu.style.display = "block";
         } else {
@@ -316,10 +316,10 @@ function toggleTemp(event) {
 function toggleSpeed(event) {
     if (event.target.textContent === "km/h") {
         speedUnit.textContent = "mph";
-        wind.textContent = windValueKmh + "km/h";
+        wind.textContent = windValueKmh + " km/h";
     } else {
         speedUnit.textContent = "km/h";
-        wind.textContent = windValueMph + "mph";
+        wind.textContent = windValueMph + " mph";
     };
 };
 
@@ -329,3 +329,9 @@ const clearInputValue = deleteIcon.addEventListener("click", clearInput);
 const settingsOpen = settingsButton.addEventListener("click", openSettings);
 tempUnit.addEventListener("click", toggleTemp);
 const toggleTempSpeed = speedUnit.addEventListener("click", toggleSpeed);
+
+window.addEventListener("click", function(event) {
+    if (!dropdownMenu.contains(event.target) && !settingsButton.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+    };
+});
