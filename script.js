@@ -325,6 +325,11 @@ function toggleSpeed(event) {
 
 input.addEventListener("change", getWeatherData);
 input.addEventListener("input", displayDeleteIcon);
+
+input.addEventListener("click", function() {
+    this.select();
+});
+
 deleteIcon.addEventListener("click", clearInput);
 settingsButton.addEventListener("click", openSettings);
 tempUnit.addEventListener("click", toggleTemp);
