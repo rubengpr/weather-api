@@ -9,7 +9,7 @@ window.onload = () => {
     input.value = "Barcelona";
     getWeatherData();
 
-    setTimeout(function() {
+    setTimeout(() => {
         const loadingPage = document.getElementById("loading-page");
         const mainPage = document.getElementById("main-page");
 
@@ -17,7 +17,7 @@ window.onload = () => {
 
         mainPage.style.opacity = "1";
 
-        setTimeout(function() {
+        setTimeout(() => {
             loadingPage.style.display = "none";
         }, 2000);
         
@@ -25,21 +25,11 @@ window.onload = () => {
 }
 
 
-function celsiusToFahr(celsius) {
-    return (celsius * 1.8) + 32;
-}
+const celsiusToFahr = (celsius) => (celsius * 1.8) + 32;
+const fahrToCelsius = (fahr) => (fahr - 32) / 1.8;
+const kmhToMph = (kmh) => (kmh * kmh * 0.621371);
+const mphToKmh = (mph) => (mph * 1.60934);
 
-function fahrToCelsius(fahr) {
-    return (fahr - 32) / 1.8;
-};
-
-function kmhToMph(kmh) {
-    return kmh * 0.621371;
-}
-
-function mphToKmh(mph) {
-    return mph * 1.60934;
-}
 
 function assignIcon(outputName, icon) {
     switch (outputName) {
@@ -120,7 +110,7 @@ async function getWeatherData() {
         errorElement.textContent = message;
         modal.style.display = "block";
 
-        closeModal.addEventListener("click", function() {
+        closeModal.addEventListener("click", () => {
             modal.style.display = "none";
         })
     };
@@ -196,7 +186,7 @@ function displayInfo(rawData) {
     const timeArray = Array.from(hourlyForecastTime);
     let hour = Number(rawData.currentConditions.datetime.substring(0,2));
     
-    timeArray.forEach(function(time, i) {
+    timeArray.forEach((time, i) => {
         let hourElement = hour + i + 1;
         if (hourElement < 24) {
             time.textContent = rawData.days[0].hours[hourElement].datetime.substring(0,2) + " H";
@@ -208,7 +198,7 @@ function displayInfo(rawData) {
     const hourlyForecastIcon = document.getElementsByClassName("hourly-icon");
     const iconArray = Array.from(hourlyForecastIcon);
 
-    iconArray.forEach(function(hourIcon, i) {
+    iconArray.forEach((hourIcon, i) => {
         let hourElement = hour + i + 1;
         if (hourElement < 24) {
             iconHourly = rawData.days[0].hours[hourElement].icon;
@@ -221,7 +211,7 @@ function displayInfo(rawData) {
     const dailyForecastIcon = document.getElementsByClassName("daily-icon");
     const iconDailyArray = Array.from(dailyForecastIcon);
 
-    iconDailyArray.forEach(function(dayIcon, i) {
+    iconDailyArray.forEach((dayIcon, i) => {
         let iconDaily = rawData.days[i + 1].icon
         assignIcon(iconDaily, dayIcon);
     });
@@ -231,14 +221,14 @@ function displayInfo(rawData) {
     let day = new Date().getDay();
     const dayArray = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
-    weekdayArray.forEach(function(element, i) {
+    weekdayArray.forEach((element, i) => {
         element.textContent = dayArray[day + i + 1];
     });
 
     minTempDaily = document.getElementsByClassName("daily-min-temperature");
     minTempDailyArray = Array.from(minTempDaily);
 
-    minTempDailyArray.forEach(function(element, i) {
+    minTempDailyArray.forEach((element, i) => {
         minTempEl = rawData.days[i + 1].tempmin;
         minTempElCelsius = fahrToCelsius(minTempEl);
         element.textContent = Math.floor(minTempElCelsius);
@@ -247,20 +237,19 @@ function displayInfo(rawData) {
     maxTempDaily = document.getElementsByClassName("daily-max-temperature");
     maxTempDailyArray = Array.from(maxTempDaily);
 
-    maxTempDailyArray.forEach(function(element, i) {
+    maxTempDailyArray.forEach((element, i) => {
         maxTempEl = rawData.days[i + 1].tempmax;
         maxTempElCelsius = fahrToCelsius(maxTempEl);
         element.textContent = Math.floor(maxTempElCelsius);
     });
 };
 
-function clearInput() {
+const clearInput = () => {
     input.value = "";
     deleteIcon.style.display = "none";
-
 }
 
-function displayDeleteIcon() {
+const displayDeleteIcon = () => {
     if (input.value === "") {
         deleteIcon.style.display = "none";
     } else {
@@ -268,7 +257,7 @@ function displayDeleteIcon() {
     };
 }
 
-function openSettings() {
+const openSettings = () => {
         if (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") {
             dropdownMenu.style.display = "block";
         } else {
@@ -276,19 +265,19 @@ function openSettings() {
     }
 };
 
-function toggleTemp(event) {
+const toggleTemp = (event) => {
     if (event.target.textContent === "Celsius") {
         tempUnit.textContent = "Fahrenheit";
         mainTemp.textContent = Math.floor(mainTempCelsius) + "ºC";
         minTemp.textContent = Math.floor(minTempCelsius) + "ºC";
         maxTemp.textContent = Math.floor(maxTempCelsius) + "ºC";
         
-        minTempDailyArray.forEach(function(element) {
+        minTempDailyArray.forEach((element) => {
             const minTempDailyValue = element.textContent;
             element.textContent = Math.floor(fahrToCelsius(minTempDailyValue));
         });
 
-        maxTempDailyArray.forEach(function(element) {
+        maxTempDailyArray.forEach((element) => {
             const maxTempDailyValue = element.textContent;
             element.textContent = Math.floor(fahrToCelsius(maxTempDailyValue));
         });
@@ -299,12 +288,12 @@ function toggleTemp(event) {
         minTemp.textContent = Math.floor(fahrMinTemp) + "ºF";
         maxTemp.textContent = Math.floor(fahrMaxTemp) + "ºF";
         
-        minTempDailyArray.forEach(function(element) {
+        minTempDailyArray.forEach((element) => {
             const minTempDailyValue = element.textContent;
             element.textContent = Math.floor(celsiusToFahr(minTempDailyValue));
         });
 
-        maxTempDailyArray.forEach(function(element) {
+        maxTempDailyArray.forEach((element) => {
             const maxTempDailyValue = element.textContent;
             element.textContent = Math.floor(celsiusToFahr(maxTempDailyValue));
         });
@@ -313,7 +302,7 @@ function toggleTemp(event) {
 
 };
 
-function toggleSpeed(event) {
+const toggleSpeed = (event) => {
     if (event.target.textContent === "km/h") {
         speedUnit.textContent = "mph";
         wind.textContent = windValueKmh + " km/h";
@@ -326,7 +315,7 @@ function toggleSpeed(event) {
 input.addEventListener("change", getWeatherData);
 input.addEventListener("input", displayDeleteIcon);
 
-input.addEventListener("click", function() {
+input.addEventListener("click", () => {
     this.select();
 });
 
@@ -335,7 +324,7 @@ settingsButton.addEventListener("click", openSettings);
 tempUnit.addEventListener("click", toggleTemp);
 speedUnit.addEventListener("click", toggleSpeed);
 
-window.addEventListener("click", function(event) {
+window.addEventListener("click", (event) => {
     if (!dropdownMenu.contains(event.target) && !settingsButton.contains(event.target)) {
         dropdownMenu.style.display = "none";
     };
