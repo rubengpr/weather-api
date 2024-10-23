@@ -323,12 +323,12 @@ function toggleSpeed(event) {
     };
 };
 
-const userInput = input.addEventListener("change", getWeatherData);
-const checkInputValue = input.addEventListener("input", displayDeleteIcon);
-const clearInputValue = deleteIcon.addEventListener("click", clearInput);
-const settingsOpen = settingsButton.addEventListener("click", openSettings);
+input.addEventListener("change", getWeatherData);
+input.addEventListener("input", displayDeleteIcon);
+deleteIcon.addEventListener("click", clearInput);
+settingsButton.addEventListener("click", openSettings);
 tempUnit.addEventListener("click", toggleTemp);
-const toggleTempSpeed = speedUnit.addEventListener("click", toggleSpeed);
+speedUnit.addEventListener("click", toggleSpeed);
 
 window.addEventListener("click", function(event) {
     if (!dropdownMenu.contains(event.target) && !settingsButton.contains(event.target)) {
