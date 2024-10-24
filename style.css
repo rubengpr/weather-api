@@ -1,11 +1,16 @@
 /* Root variables */
 html:root {
-    --bck-clr: rgb(182, 227, 255);
-    --box-clr: rgb(163, 214, 255);
+    --bck-clr: rgb(247, 247, 247);
+    --box-clr: rgb(237, 237, 237);
+    --hvr-clr: rgb(240, 240, 240);
     --i-clr: rgb(109, 109, 109);
     --metric-name: rgb(6, 6, 6);
     --white: rgb(255, 255, 255);
     --white-hvr: rgba(255, 255, 255, 0.90);
+    --dark-mode-clr: rgba(29, 29, 29, 0.9);
+    --dark-mode-secondary: rgb(55, 55, 55);
+    --dark-mode-box: rgb(62, 62, 62);
+    --dark-mode-secondary-hvr: rgb(93, 93, 93);
 }
 
 /* Global styles */
@@ -16,6 +21,56 @@ body {
     align-items: center;
     background-color: var(--bck-clr);
     margin: 0;
+}
+
+body.dark-mode {
+    background-color: var(--dark-mode-clr);
+    color: white;
+}
+
+body.dark-mode .metric-name {
+    color: white;
+}
+
+body.dark-mode .hourly-box {
+    background-color: var(--dark-mode-box);
+}
+
+body.dark-mode .daily-box {
+    background-color: var(--dark-mode-box);
+}
+
+body.dark-mode .dropdown-icon {
+    color: white;
+}
+
+body.dark-mode .header-icon {
+    color: white;
+}
+
+body.dark-mode #city-input {
+    background-color: var(--dark-mode-secondary);
+    color: white;
+}
+
+body.dark-mode #settings {
+    background-color: var(--dark-mode-secondary);
+}
+
+body.dark-mode #settings:hover {
+    background-color: var(--dark-mode-secondary-hvr);
+}
+
+body.dark-mode #dropdown-menu {
+    background-color: var(--dark-mode-secondary);
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: var(--dark-mode-secondary-hvr);
+}
+
+body.dark-mode .dropdown-button {
+    color: white;
 }
 
 /* Loading page */
@@ -118,11 +173,11 @@ button {
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    padding: 0 0.4rem;
+    padding: 0.1rem 0.4rem;
 }
 
 .dropdown-item:hover {
-    background-color: rgb(242, 250, 254);
+    background-color: var(--hvr-clr);
 }
 
 .icon-box {
@@ -152,7 +207,7 @@ button {
     border-radius: 0.3rem 0.3rem 0 0;
 }
 
-.dropdown-item:nth-child(2) {
+.dropdown-item:nth-child(3) {
     border-radius: 0 0 0.3rem 0.3rem;
 }
 

@@ -1,8 +1,10 @@
+const body = document.body;
 const input = document.getElementById("city-input");
 const deleteIcon = document.getElementById("delete-icon");
 const settingsButton = document.getElementById("settings");
 const tempUnit = document.getElementById("temp-unit");
 const speedUnit = document.getElementById("speed-unit");
+const themeOption = document.getElementById("theme-option")
 const dropdownMenu = document.getElementById("dropdown-menu");
 
 window.onload = () => {
@@ -312,17 +314,37 @@ const toggleSpeed = (event) => {
     };
 };
 
+const toggleTheme = (event) => {
+    if (event.target.textContent === "Dark mode") {
+        event.target.textContent = "Light mode";
+        body.classList.toggle("dark-mode");
+
+        const themeIcon = document.getElementById("theme-icon");
+        themeIcon.classList.toggle("fa-moon");
+        themeIcon.classList.toggle("fa-lightbulb");
+    } else {
+        event.target.textContent = "Dark mode";
+        body.classList.toggle("dark-mode");
+
+        const themeIcon = document.getElementById("theme-icon");
+        themeIcon.classList.toggle("fa-moon");
+        themeIcon.classList.toggle("fa-lightbulb");
+    }
+};
+
 input.addEventListener("change", getWeatherData);
 input.addEventListener("input", displayDeleteIcon);
 
 input.addEventListener("click", () => {
-    this.select();
+    input.select();
 });
 
 deleteIcon.addEventListener("click", clearInput);
 settingsButton.addEventListener("click", openSettings);
 tempUnit.addEventListener("click", toggleTemp);
 speedUnit.addEventListener("click", toggleSpeed);
+themeOption.addEventListener("click", toggleTheme);
+
 
 window.addEventListener("click", (event) => {
     if (!dropdownMenu.contains(event.target) && !settingsButton.contains(event.target)) {
