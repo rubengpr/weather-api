@@ -351,3 +351,5 @@ window.addEventListener("click", (event) => {
         dropdownMenu.style.display = "none";
     };
 });
+
+import './style.css';
